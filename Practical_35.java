@@ -1,0 +1,46 @@
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
+import javafx.scene.control.Label;
+import javafx.geometry.Pos;
+import javafx.stage.Stage;
+
+public class Practical35 extends Application {
+
+    public void start(Stage stage) {
+        HBox root = new HBox(20);
+        root.setAlignment(Pos.BOTTOM_CENTER);
+
+        VBox v1 = createBar("Projects - 20%", 20, Color.RED);
+        VBox v2 = createBar("Quizzes - 10%", 10, Color.BLUE);
+        VBox v3 = createBar("Midterm - 30%", 30, Color.GREEN);
+        VBox v4 = createBar("Final - 40%", 40, Color.ORANGE);
+
+        root.getChildren().addAll(v1, v2, v3, v4);
+
+        Scene scene = new Scene(root, 500, 300);
+        stage.setScene(scene);
+        stage.setTitle("Bar Chart");
+        stage.show();
+    }
+
+    private VBox createBar(String text, int value, Color color) {
+        Rectangle rect = new Rectangle(50, value * 3);
+        rect.setFill(color);
+
+        Label label = new Label(text);
+
+        VBox box = new VBox(10);
+        box.setAlignment(Pos.BOTTOM_CENTER);
+        box.getChildren().addAll(rect, label);
+
+        return box;
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+  }
